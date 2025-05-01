@@ -1,0 +1,45 @@
+CalculatorWS.java:
+package org.calculator;
+
+import javax.jws.WebMethod;
+import javax.jws.WebService;
+
+@WebService
+public class CalculatorWS {
+
+    @WebMethod
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    @WebMethod
+    public int subtract(int a, int b) {
+        return a - b;
+    }
+
+    @WebMethod
+    public int multiply(int a, int b) {
+        return a * b;
+    }
+
+    @WebMethod
+    public int divide(int a, int b) {
+        if (b == 0) throw new ArithmeticException("Divide by zero");
+        return a / b;
+    }
+}
+
+
+Web.xml:
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" version="3.1">
+    <servlet>
+        <servlet-name>CalculatorWS</servlet-name>
+        <servlet-class>com.sun.xml.ws.transport.http.servlet.WSServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>CalculatorWS</servlet-name>
+        <url-pattern>/CalculatorWS</url-pattern>
+    </servlet-mapping>
+</web-app>
