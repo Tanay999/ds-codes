@@ -1,0 +1,51 @@
+//1
+omkar@ubuntu:~/Downloads/DS/1$ javac Server/*.java Client/*.java
+omkar@ubuntu:~/Downloads/DS/1$ rmic Server.AddServerImpl
+omkar@ubuntu:~/Downloads/DS/1$ rmiregistry &
+omkar@ubuntu:~/Downloads/DS/1$ java Server.AddServer
+Server is ready.
+
+new terminal
+omkar@ubuntu:~/Downloads/DS/1$ java Client.AddClient localhost:1100 10 10
+The sum is: 20.0
+
+//2
+omkar@ubuntu:~/Downloads/DS/2$ idlj -fall ReverseModule.idl
+omkar@ubuntu:~/Downloads/DS/2$ mv ReverseModule Generated/
+omkar@ubuntu:~/Downloads/DS/2$ javac -d . *.java Generated/ReverseModule/*.java
+omkar@ubuntu:~/Downloads/DS/2$ orbd -ORBInitialPort 1050 &
+omkar@ubuntu:~/Downloads/DS/2$ java ReverseServer -ORBInitialPort 1050 -ORBInitialHost localhost
+ReverseServer ready and waiting...
+
+new terminal
+omkar@ubuntu:~/Downloads/DS/2$ java ReverseClient -ORBInitialPort 1050 -ORBInitialHost localhost
+hello
+olleh
+
+//3
+omkar@ubuntu:~/Downloads/DS/3$ javac -cp $MPJ_HOME/lib/mpj.jar ScatterGather.java
+omkar@ubuntu:~/Downloads/DS/3$ $MPJ_HOME/bin/mpjrun.sh -np 4 ScatterGather
+
+//4
+javac
+java
+
+//5
+omkar@ubuntu:~/Downloads/DS/5$ javac MutualServer.java ClientOne.java ClientTwo.java
+omkar@ubuntu:~/Downloads/DS/5$ java MutualServer
+Server Started
+
+new terminal
+omkar@ubuntu:~/Downloads/DS/5$ java ClientOne
+new terminal
+omkar@ubuntu:~/Downloads/DS/5$ java ClientTwo
+
+//6
+javac Bully.java
+java Bully
+javac Ring.java
+java Ring
+
+
+
+
